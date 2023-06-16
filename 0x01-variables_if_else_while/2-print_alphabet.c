@@ -9,10 +9,10 @@ int main(void)
 {
 	char letters[26] = "abcdefghijklmnopqrstuvwxyz";
 
-	for (int 1 = 0; i < 26; i++)
+	for (int i = 0; i < 26; i++)
 	{
-		putchar(alp[i]);
-		putchar("\n");
+		putchar(letters[i]);
+		putchar('\n');
 	}
 	return (0);
 }
