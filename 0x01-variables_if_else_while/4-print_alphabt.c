@@ -14,7 +14,7 @@ int main(void)
 
 	for (i = 0; i < 26; i++)
 	{
-		if (i == 5 || i == 17)
+		if (i == 4 || i == 16)
 		{
 			continue;
 		}
