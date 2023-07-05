@@ -6,12 +6,12 @@
  * Return: -1 if there's an error, or the factorial result
  */
 
-int factorial(int *n)
+int factorial(int n)
 {
-	if (*n < 0)
+	if (n < 0)
 	{
 		return (-1);
-	} else if (*n <= 1)
+	} else if (n <= 1)
 	{
 		return (1);
 	}
