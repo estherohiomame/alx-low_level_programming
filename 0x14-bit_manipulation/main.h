@@ -21,4 +21,7 @@ int clear_bit(unsigned long int *n, unsigned int index);
 /* Question 6: Count the number of bits to flip to get from one number to another */
 unsigned int flip_bits(unsigned long int n, unsigned long int m);
 
+/* Function to write a character to stdout */
+int _putchar(char c);
+
 #endif /* MAIN_H */
