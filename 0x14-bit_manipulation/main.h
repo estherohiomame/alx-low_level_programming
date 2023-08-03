@@ -24,4 +24,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m);
 /* Function to write a character to stdout */
 int _putchar(char c);
 
+/* Function to find the endianness */
+int get_endianness(void);
+
 #endif /* MAIN_H */
