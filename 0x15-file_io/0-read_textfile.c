@@ -3,45 +3,28 @@
 
 /**
  * read_textfile - Read text file and print to STDOUT.
- * @filename: Text file to be read.
- * @letters: Number of letters to read and print.
+ * @filename: Name of the text file to be read.
+ * @letters: Number of letters to be read and printed.
  *
- * Return: Number of letters read and printed, or 0 on failure.
+ * Return: The number of bytes actually read and printed.
+ *         0 when the function fails, or filename is NULL.
  */
-
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	if (filename == NULL)
+	char *buffer;
+	ssize_t file_descriptor;
+	ssize_t bytes_written;
+	ssize_t bytes_read;
+
+	file_descriptor = open(filename, O_RDONLY);
+	if (file_descriptor == -1)
 		return (0);
 
-	int fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (0);
-
-	char *buffer = malloc(sizeof(char) * letters);
-	if (buffer == NULL)
-	{
-		close(fd);
-		return (0);
-	}
-
-	ssize_t bytesRead = read(fd, buffer, letters);
-	if (bytesRead == -1)
-	{
-		free(buffer);
-		close(fd);
-		return (0);
-	}
-
-	ssize_t bytesWritten = write(STDOUT_FILENO, buffer, bytesRead);
-	if (bytesWritten == -1 || bytesWritten != bytesRead)
-	{
-		free(buffer);
-		close(fd);
-		return (0);
-	}
+	buffer = malloc(sizeof(char) * letters);
+	bytes_read = read(file_descriptor, buffer, letters);
+	bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
 
 	free(buffer);
-	close(fd);
-	return (bytesWritten);
+	close(file_descriptor);
+	return (bytes_written);
 }
